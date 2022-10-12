@@ -117,33 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="tspJobs.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <metadata name="imlSmall.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>109, 17</value>
-  </metadata>
-  <data name="imlSmall.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAAAY
-        AwAAAk1TRnQBSQFMAwEBAAEIAQABCAEAARABAAEQAQAE/wEhAQAI/wFCAU0BNgcAATYDAAEoAwABQAMA
-        ARADAAEBAQABIAYAARAuAAMZASMDKgFG+AADMAGmAwAB/wMeASvsAAMPARQDLwGoAwAB/wMAAf8DHQHV
-        Ax8BLegAAy8BqQMAAf8DAAH/AwAB/wMAAf8DAAH/Ax8BLtwAAw8BEwMvAakDOAH/AwAB/wMoAf8DIgH/
-        AzUB/wMAAf8DHQHWAx4BK9AAAxsBJwMuAVEDMgGZAwAB/wO2Af8DOgH/A2UB/wNWAf8DkwH/A24B/wMA
-        Af8DAAH/AykBRAMuAVLEAAMTARkDGwHYAzQBlAM1AX0DAAH/A7kB/wNJAf8DhAH/A3wB/wOJAf8DnQH/
-        A14B/wMYAd0DMAFaAwAB/wMzAWjAAAMrAbYDHQHVCAADLAG0A0YB/wNIAf8DSgH/A2EB/wNEAf8DXwH/
-        AxcB3wgAAzABpgMXAeDAAAMCAf0DNAGODAADMgGbAwAB/wMAAf8DAAH/AwAB/wMYAd4DIQExCAADFQEc
-        AwEB/sAAAxQB5AMvAakQAAMrAbUDAAH/AwAB/wMYAd4QAAMtAU8DCAH1wAADJwE/AwoB8gMzAZUDLgFS
-        Aw8BFAgAAzQBkQMiAcsDIAEvBAADCQELAywBTAM0AXYDCAH1AzMBmsQAAzMBZwMAAf8DAAH/AyYBwhgA
-        AzQBdQMAAf8DAAH/AyYBxAMHAQnIAAMXASADNAGMAwAB/wMzAWgDBQEGAwcBCQMtAVADMgGcAy4BrQML
-        AfEDNAGRAyEBMdgAAycBwQMAAf8DAQH+AwcB9gMAAf8DCgHyAyEBzQMqAUfkAAMzAWgDJAHGAyUBxQM0
-        AXUDDAEQ/wDZAAFCAU0BPgcAAT4DAAEoAwABQAMAARADAAEBAQABAQUAAYAXAAP/AQAB/gF/BgAB/gE/
-        BgAB+AEfBgAB+AEPBgAB4AEHBgABgAEBDgABMAEMBgABOAEMBgACPAYAAQYBIAYAAYcB4AYAAcABAwYA
-        AfABDwYAAfgBPwYAAv8GAAs=
-</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

@@ -77,12 +77,28 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\SharedCode\clsFtp.vb">
+      <Link>Classes\clsFtp.vb</Link>
+    </Compile>
+    <Compile Include="..\SharedCode\Crypto.vb">
+      <Link>Classes\Crypto.vb</Link>
+    </Compile>
+    <Compile Include="Classes\clsConfigInfo.vb" />
+    <Compile Include="Classes\clsEchoJobs.vb" />
+    <Compile Include="Classes\clsServiceLogger.vb" />
+    <Compile Include="Forms\frmEditJob.Designer.vb">
+      <DependentUpon>frmEditJob.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmEditJob.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\frmMain.Designer.vb">
       <DependentUpon>frmMain.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Modules\modMain.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -101,6 +117,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\frmEditJob.resx">
+      <DependentUpon>frmEditJob.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
@@ -125,7 +144,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FtpEcho.ico" />
+    <None Include="Resources\delete2.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\add2.png" />
+    <None Include="Resources\eye.png" />
+    <None Include="Resources\folder_view.png" />
+    <None Include="Resources\nav_right_yellow.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\check.png" />
+    <None Include="Resources\ftp_icon_24.png" />
+    <None Include="Resources\ftp_icon_128.png" />
+    <None Include="Resources\ftp_icon_64.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <PropertyGroup>
     <PostBuildEvent>call "$(DevEnvDir)..\Tools\VsDevCmd.bat"
