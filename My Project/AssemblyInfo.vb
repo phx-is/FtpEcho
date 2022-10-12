@@ -9,10 +9,10 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("FtpEcho")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("Hewlett-Packard Company")>
+<Assembly: AssemblyDescription("Ftp folder monitor and echoing program.")>
+<Assembly: AssemblyCompany("Phoenix Information Systems, LLC")>
 <Assembly: AssemblyProduct("FtpEcho")>
-<Assembly: AssemblyCopyright("Copyright © Hewlett-Packard Company 2022")>
+<Assembly: AssemblyCopyright("Copyright © PIS, LLC 2022")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
