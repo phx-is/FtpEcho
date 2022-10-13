@@ -10,7 +10,7 @@ Public Class frmMain
         frmEditJob.JobName = "New Job"
         frmEditJob.MonitorFolder = ""
         frmEditJob.MonitorRoot = ""
-        frmEditJob.FtpServer = "96.95.143.241"
+        frmEditJob.FtpServer = "ftp://96.95.143.241"
         frmEditJob.FtpUser = "BackupLogin"
         frmEditJob.FtpPassword = "3upHa2rA_7ufr;r!za+&"
         frmEditJob.FtpRoot = "/"

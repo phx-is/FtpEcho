@@ -123,7 +123,12 @@ Public Class clsEchoMonitor
 
 
     Private Sub FileWatcher_Created(sender As Object, e As FileSystemEventArgs) Handles FileWatcher.Created
-
+        Dim poFile As FileInfo = New FileInfo(e.FullPath)
+        If poFile.Attributes.HasFlag(FileAttributes.Directory) Then
+            ' skip this one
+            Exit Sub
+        End If
+        ' not a directory, add to list
         SyncLock moMonitorList
             For piIndex = 0 To moMonitorList.Count - 1
                 Dim poInfo As MonitorInfo = moMonitorList(piIndex)
