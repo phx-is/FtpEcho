@@ -25,13 +25,13 @@ Partial Class frmMain
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.lvwJobs = New System.Windows.Forms.ListView()
         Me.tspJobs = New System.Windows.Forms.ToolStrip()
         Me.btnAdd = New System.Windows.Forms.ToolStripButton()
         Me.btnEdit = New System.Windows.Forms.ToolStripButton()
         Me.btnDelete = New System.Windows.Forms.ToolStripButton()
-        Me.lvwJobs = New System.Windows.Forms.ListView()
-        Me.lvwJobStatus = New System.Windows.Forms.ListView()
         Me.btnLog = New System.Windows.Forms.ToolStripButton()
+        Me.lvwJobStatus = New System.Windows.Forms.ListView()
         Me.imlSmall = New System.Windows.Forms.ImageList(Me.components)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -59,6 +59,18 @@ Partial Class frmMain
         Me.SplitContainer1.Size = New System.Drawing.Size(1200, 727)
         Me.SplitContainer1.SplitterDistance = 260
         Me.SplitContainer1.TabIndex = 0
+        '
+        'lvwJobs
+        '
+        Me.lvwJobs.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.lvwJobs.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lvwJobs.ForeColor = System.Drawing.Color.Black
+        Me.lvwJobs.HideSelection = False
+        Me.lvwJobs.Location = New System.Drawing.Point(0, 39)
+        Me.lvwJobs.Name = "lvwJobs"
+        Me.lvwJobs.Size = New System.Drawing.Size(260, 688)
+        Me.lvwJobs.TabIndex = 1
+        Me.lvwJobs.UseCompatibleStateImageBehavior = False
         '
         'tspJobs
         '
@@ -97,30 +109,6 @@ Partial Class frmMain
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(36, 36)
         '
-        'lvwJobs
-        '
-        Me.lvwJobs.BackColor = System.Drawing.Color.Black
-        Me.lvwJobs.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lvwJobs.ForeColor = System.Drawing.Color.White
-        Me.lvwJobs.HideSelection = False
-        Me.lvwJobs.Location = New System.Drawing.Point(0, 39)
-        Me.lvwJobs.Name = "lvwJobs"
-        Me.lvwJobs.Size = New System.Drawing.Size(260, 688)
-        Me.lvwJobs.TabIndex = 1
-        Me.lvwJobs.UseCompatibleStateImageBehavior = False
-        '
-        'lvwJobStatus
-        '
-        Me.lvwJobStatus.BackColor = System.Drawing.Color.Black
-        Me.lvwJobStatus.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.lvwJobStatus.ForeColor = System.Drawing.Color.White
-        Me.lvwJobStatus.HideSelection = False
-        Me.lvwJobStatus.Location = New System.Drawing.Point(0, 0)
-        Me.lvwJobStatus.Name = "lvwJobStatus"
-        Me.lvwJobStatus.Size = New System.Drawing.Size(936, 727)
-        Me.lvwJobStatus.TabIndex = 2
-        Me.lvwJobStatus.UseCompatibleStateImageBehavior = False
-        '
         'btnLog
         '
         Me.btnLog.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
@@ -131,6 +119,18 @@ Partial Class frmMain
         Me.btnLog.Size = New System.Drawing.Size(36, 36)
         Me.btnLog.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
         Me.btnLog.ToolTipText = "View log file"
+        '
+        'lvwJobStatus
+        '
+        Me.lvwJobStatus.BackColor = System.Drawing.Color.White
+        Me.lvwJobStatus.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.lvwJobStatus.ForeColor = System.Drawing.Color.Black
+        Me.lvwJobStatus.HideSelection = False
+        Me.lvwJobStatus.Location = New System.Drawing.Point(0, 0)
+        Me.lvwJobStatus.Name = "lvwJobStatus"
+        Me.lvwJobStatus.Size = New System.Drawing.Size(936, 727)
+        Me.lvwJobStatus.TabIndex = 2
+        Me.lvwJobStatus.UseCompatibleStateImageBehavior = False
         '
         'imlSmall
         '

@@ -131,6 +131,10 @@ Public Class clsEchoJobs
         moJobsTB.AcceptChanges()
         Return True
     End Function
+    Public Function AddJob(ByVal oJobDetail As JobDetail) As Boolean
+        Return AddJob(oJobDetail.JobName, oJobDetail.MonitorFolder, oJobDetail.MonitorRootFolder, oJobDetail.FtpServer, oJobDetail.FtpLogin, oJobDetail.FtpPassword, oJobDetail.FtpRootFolder)
+    End Function
+
 
     Public Function UpdateJob(ByVal JobName As String, ByVal MonitorFolder As String, ByVal MonitorRootFolder As String, ByVal FtpServer As String, ByVal FtpUser As String, ByVal FtpPass As String, ByVal FtpRoot As String) As Boolean
         Dim piIndex As Integer
@@ -151,6 +155,11 @@ Public Class clsEchoJobs
         Next
         Return False
     End Function
+    Public Function UpdateJob(ByVal oJobDetail As JobDetail) As Boolean
+        Return UpdateJob(oJobDetail.JobName, oJobDetail.MonitorFolder, oJobDetail.MonitorRootFolder, oJobDetail.FtpServer, oJobDetail.FtpLogin, oJobDetail.FtpPassword, oJobDetail.FtpRootFolder)
+    End Function
+
+
 
     Public Function RemoveJob(ByVal JobName As String) As Boolean
         Dim piIndex As Integer
@@ -167,7 +176,25 @@ Public Class clsEchoJobs
         Return False
     End Function
 
+    Public Function GetJob(ByVal JobName As String) As JobDetail
+        Dim piIndex As Integer
+        Dim poJD As New JobDetail
 
+        For piIndex = 0 To moJobsTB.Rows.Count - 1
+            Dim poRow As DataRow = moJobsTB.Rows(piIndex)
+            If SafeStr(poRow("JobName")).Trim.ToLower = JobName.Trim.ToLower Then
+                poJD.MonitorFolder = SafeStr(poRow("MonitorFolder"))
+                poJD.MonitorRootFolder = SafeStr(poRow("MonitorRootFolder"))
+                poJD.JobName = SafeStr(poRow("JobName"))
+                poJD.FtpServer = SafeStr(poRow("FtpServer"))
+                poJD.FtpLogin = DecryptValue(SafeStr(poRow("FtpLogin")))
+                poJD.FtpPassword = DecryptValue(SafeStr(poRow("FtpPassword")))
+                poJD.FtpRootFolder = SafeStr(poRow("FtpRootFolder"))
+                Return poJD
+            End If
+        Next
+        Return Nothing
+    End Function
 
 
     Private Function EncryptValue(ByVal PlainText As String) As String

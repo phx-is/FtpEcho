@@ -69,6 +69,17 @@ Public Class frmEditJob
     End Property
 
 
+
+    Public Property LockJobName As Boolean
+        Get
+            Return txtJobName.ReadOnly
+        End Get
+        Set(value As Boolean)
+            txtJobName.ReadOnly = value
+        End Set
+    End Property
+
+
     Private Sub btnTogglePass_Click(sender As Object, e As EventArgs) Handles btnTogglePass.Click
         If txtFtpPass.PasswordChar = "" Then
             txtFtpPass.PasswordChar = PW_CHAR

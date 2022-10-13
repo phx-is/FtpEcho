@@ -71,13 +71,12 @@ Public Class clsConfigInfo
                     poSW.Flush()
                     poSW.Close()
                 End Using
-                poFS.Flush()
                 poFS.Close()
             End Using
             pbResult = True
 
         Catch ex As Exception
-            goLogger.LogException("clsConfigInfo.LoadConfigurationFile", ex)
+            goLogger.LogException("clsConfigInfo.SaveConfigFile", ex)
         End Try
 
         Return pbResult

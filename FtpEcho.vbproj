@@ -85,6 +85,8 @@
     </Compile>
     <Compile Include="Classes\clsConfigInfo.vb" />
     <Compile Include="Classes\clsEchoJobs.vb" />
+    <Compile Include="Classes\clsEchoMonitor.vb" />
+    <Compile Include="Classes\clsNewFile.vb" />
     <Compile Include="Classes\clsServiceLogger.vb" />
     <Compile Include="Forms\frmEditJob.Designer.vb">
       <DependentUpon>frmEditJob.vb</DependentUpon>
@@ -144,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FtpEcho.ico" />
+    <None Include="Resources\hourglass.png" />
     <None Include="Resources\delete2.png" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\add2.png" />
