@@ -181,6 +181,7 @@ Public Class clsEchoMonitor
         AddHandler oNewFile.JobStarted, AddressOf NewFile_JobStarted
         AddHandler oNewFile.JobError, AddressOf NewFile_JobError
         AddHandler oNewFile.JobWaiting, AddressOf NewFile_JobWaiting
+        AddHandler oNewFile.BeginningUpload, AddressOf NewFile_BeginningUpload
         AddHandler oNewFile.JobUploading, AddressOf NewFile_JobUploading
         AddHandler oNewFile.JobComplete, AddressOf NewFile_JobComplete
     End Sub
@@ -189,6 +190,7 @@ Public Class clsEchoMonitor
         RemoveHandler oNewFile.JobStarted, AddressOf NewFile_JobStarted
         RemoveHandler oNewFile.JobError, AddressOf NewFile_JobError
         RemoveHandler oNewFile.JobWaiting, AddressOf NewFile_JobWaiting
+        RemoveHandler oNewFile.BeginningUpload, AddressOf NewFile_BeginningUpload
         RemoveHandler oNewFile.JobUploading, AddressOf NewFile_JobUploading
         RemoveHandler oNewFile.JobComplete, AddressOf NewFile_JobComplete
     End Sub
@@ -206,6 +208,10 @@ Public Class clsEchoMonitor
 
     Private Sub NewFile_JobWaiting(ByVal Sender As clsNewFile)
         RaiseEvent JobStatus(Sender.JobData, Sender.FileName, JobStatuses.Waiting, "FTP waiting for file upload to complete: " & Sender.FileName & ".")
+    End Sub
+
+    Private Sub NewFile_BeginningUpload(ByVal Sender As clsNewFile, ByVal FileSize As Long)
+        RaiseEvent JobStatus(Sender.JobData, Sender.FileName, JobStatuses.Uploading, "FTP file echo starting, file size is " & String.Format("{0:###,###,###,##0}", FileSize) & ".")
     End Sub
 
     Private Sub NewFile_JobUploading(ByVal Sender As clsNewFile, PercentComplete As Integer)

@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.Diagnostics.Eventing.Reader
+Imports System.IO
 Imports System.Net
 Imports System.Net.Configuration
 
@@ -8,6 +9,7 @@ Public Class clsNewFile
     Public Event JobStarted(ByVal Sender As clsNewFile)
     Public Event JobError(ByVal Sender As clsNewFile, ByVal ErrorMessage As String)
     Public Event JobWaiting(ByVal Sender As clsNewFile)
+    Public Event BeginningUpload(ByVal Sender As clsNewFile, ByVal FileSize As Long)
     Public Event JobUploading(ByVal Sender As clsNewFile, PercentComplete As Integer)
     Public Event JobComplete(ByVal Sender As clsNewFile, Success As Boolean, LocalFile As String, UploadPath As String, ElapsedSeconds As Long, ErrorMsg As String)
 
@@ -104,6 +106,8 @@ Public Class clsNewFile
                         End If
 
                     Case FileStatus.BeginningUpload
+                        RaiseEvent BeginningUpload(Me, mlLastFileSize)
+
                         ' build output filename
                         Dim psDestFile As String
                         Dim psDirectoryName As String
@@ -152,7 +156,10 @@ Public Class clsNewFile
                             moFtp.UploadFile(msFilename, psRemoteURI, True)
                             miCurrentStatus = FileStatus.Uploading
                         Else
-                            RaiseEvent JobError(Me, "Unable to create folder path on destination FTP server: " & psBaseFolder)
+                            Dim psTemp As String = "clsNewFile.MonitorFIleStatus - Unable to create folder path on destination FTP server: {0}Folder {1}{0}Code: {2} {3}"
+                            psTemp = String.Format(psTemp, vbCrLf, psBaseFolder, moFtp.LastStatusCode, moFtp.LastResponseMessage)
+                            goLogger.LogEntry(psTemp, EventLogEntryType.Warning)
+                            RaiseEvent JobError(Me, "Unable to create folder path on destination FTP server: " & psBaseFolder & " status code was: " & moFtp.LastStatusCode & " " & moFtp.LastResponseMessage)
                             miCurrentStatus = FileStatus.UploadingComplete
                         End If
 
