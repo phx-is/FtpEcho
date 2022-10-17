@@ -85,6 +85,7 @@ Public Class clsNewFile
 
     Private Sub MonitorFileStatus()
         Dim pbDone As Boolean = False
+        Dim ptDelayStart As Date = Date.Now
 
         RaiseEvent JobStarted(Me)
 
@@ -95,14 +96,20 @@ Public Class clsNewFile
                         RaiseEvent JobWaiting(Me)
                         mlLastFileSize = 0
                         miCurrentStatus = FileStatus.Monitoring
+                        ptDelayStart = DateTime.Now
 
                     Case FileStatus.Monitoring
                         If mlLastFileSize < moLastInfo.Length Then
                             mlLastFileSize = moLastInfo.Length
                             moLastInfo.Refresh()
+                            ptDelayStart = DateTime.Now
                         Else
-                            ' file sizes are equal time to go
-                            miCurrentStatus = FileStatus.BeginningUpload
+                            ' file sizes are equal, give us a delay and then time to go
+                            mlLastFileSize = moLastInfo.Length
+                            moLastInfo.Refresh()
+                            If Math.Abs(DateTime.Now.Subtract(ptDelayStart).TotalSeconds) > 15 Then
+                                miCurrentStatus = FileStatus.BeginningUpload
+                            End If
                         End If
 
                     Case FileStatus.BeginningUpload
