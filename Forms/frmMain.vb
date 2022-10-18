@@ -152,7 +152,7 @@ Public Class frmMain
             If Status = clsEchoMonitor.JobStatuses.AddedToList Then
                 If poJobLvItem Is Nothing Then
                     ' new item 
-                    poJobLvItem = lvwJobStatus.Items.Add(FileName, JobInfo.JobName, "wait")
+                    poJobLvItem = lvwJobStatus.Items.Add("", JobInfo.JobName, "wait")
                     poJobLvItem.SubItems.Add("New file detected in monitored folder: " & FileName)
                     poJobLvItem.Tag = FileName
                 End If
@@ -172,16 +172,19 @@ Public Class frmMain
                             poJobLvItem.SubItems(1).Text = Message
                             poJobLvItem.ImageKey = "ready"
                             goLogger.LogEntry("FTP Echo complete - " & JobInfo.JobName & " (" & FileName & " )", EventLogEntryType.Information)
+                            poJobLvItem.Tag = "" ' clear tag so we don't update it again as it's complete
 
                         Case clsEchoMonitor.JobStatuses.UploadFailed
                             poJobLvItem.SubItems(1).Text = Message
                             poJobLvItem.ImageKey = "error"
                             goLogger.LogEntry("FTP Echo FAILED - " & JobInfo.JobName & " (" & FileName & " )", EventLogEntryType.Warning)
+                            poJobLvItem.Tag = "" ' clear tag so we don't update it again as it's complete
 
                         Case clsEchoMonitor.JobStatuses.Error
                             poJobLvItem.SubItems(1).Text = Message
                             poJobLvItem.ImageKey = "error"
                             goLogger.LogEntry("FTP Echo error: " & JobInfo.JobName & " (" & FileName & " ): " & Message, EventLogEntryType.Error)
+                            poJobLvItem.Tag = "" ' clear tag so we don't update it again as it's complete
 
                         Case Else
                             goLogger.LogEntry("frmMain.foMonitorList_JobStatus - Unhandled status event from clsEchoMonitor(" & Status & "): " & FileName, EventLogEntryType.Warning)
