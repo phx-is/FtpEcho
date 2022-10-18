@@ -164,6 +164,20 @@ Public Class clsEchoMonitor
         End SyncLock
     End Sub
 
+    Private Sub RemoveMonitoredFile(ByVal JobData As clsEchoJobs.JobDetail, ByVal fileName As String)
+        Dim piIndex As Integer
+        SyncLock moXferList
+            For piIndex = moXferList.Count - 1 To 0 Step -1
+                If moXferList(piIndex).JobData.JobName = JobData.JobName Then
+                    If moXferList(piIndex).FileName = fileName Then
+                        RemoveXferEventHandlers(moXferList(piIndex))
+                        moXferList.RemoveAt(piIndex)
+                        Exit For
+                    End If
+                End If
+            Next
+        End SyncLock
+    End Sub
 
 
 
@@ -204,6 +218,7 @@ Public Class clsEchoMonitor
     Private Sub NewFile_JobError(ByVal Sender As clsNewFile, ByVal ErrorMessage As String)
         goLogger.LogError("clsEchoMonitor.JobError", Sender.JobData.JobName & "(" & Sender.FileName & ") " & ErrorMessage)
         RaiseEvent JobStatus(Sender.JobData, Sender.FileName, JobStatuses.Error, ErrorMessage)
+        RemoveMonitoredFile(Sender.JobData, Sender.FileName)
     End Sub
 
     Private Sub NewFile_JobWaiting(ByVal Sender As clsNewFile)
@@ -227,6 +242,7 @@ Public Class clsEchoMonitor
             psTemp = String.Format("FTP FAILED for file {0}, {1}", UploadPath, ErrorMsg)
             RaiseEvent JobStatus(Sender.JobData, Sender.FileName, JobStatuses.UploadFailed, psTemp)
         End If
+        RemoveMonitoredFile(Sender.JobData, Sender.FileName)
     End Sub
 
 
