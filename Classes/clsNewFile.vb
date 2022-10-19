@@ -101,15 +101,18 @@ Public Class clsNewFile
                         ptMonitorStart = DateTime.Now
 
                     Case FileStatus.Monitoring
-                        If mlLastFileSize < moLastInfo.Length Then
+                        If mlLastFileSize < moLastInfo.Length OrElse FileIsLocked(moLastInfo) Then
                             mlLastFileSize = moLastInfo.Length
                             moLastInfo.Refresh()
                             ptDelayStart = DateTime.Now
-                        Else
-                            ' file sizes are equal, give us a delay and then time to go
-                            If Math.Abs(DateTime.Now.Subtract(ptDelayStart).TotalSeconds) > 15 Then
-                                miCurrentStatus = FileStatus.BeginningUpload
+                            'timeout?
+                            If DateTime.Now.Subtract(ptMonitorStart).TotalMinutes > 60 Then
+                                RaiseEvent JobError(Me, "Timeout waiting for incoming FTP to complete: " & moLastInfo.FullName & ".")
+                                miCurrentStatus = FileStatus.UploadingComplete
                             End If
+                        Else
+                            ' filesize >= current size and not locked so start the upload!
+                            miCurrentStatus = FileStatus.BeginningUpload
                         End If
 
                     Case FileStatus.BeginningUpload
@@ -192,8 +195,22 @@ Public Class clsNewFile
     End Sub
 
 
+    Private Function FileIsLocked(ByVal FileData As FileInfo) As Boolean
+        Try
+            Using stream As FileStream = FileData.Open(FileMode.Open, FileAccess.Read, FileShare.None)
+                stream.Close()
+            End Using
 
+        Catch Ex As IOException
+            Return True
 
+        Catch BaseEx As Exception
+            goLogger.LogException("clsNewFile.FileIsLocked(" & FileData.FullName & ")", BaseEx)
+            Return True
+        End Try
+
+        Return False
+    End Function
 
 
 #Region "  iDisposable Code "
